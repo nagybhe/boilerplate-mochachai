@@ -69,20 +69,15 @@ suite("Functional Tests", function () {
         });
     });
 
-    // #5 - Teste equivalente ao formulário HTML para Colombo
-    test('Submit the surname "Colombo" via POST', function (done) {
-      chai
-        .request(server)
-        .keepOpen()
-        .post("/travellers")
-        .send({ surname: "Colombo" })
-        .end(function (err, res) {
-          assert.equal(res.status, 200);
-          assert.isObject(res.body);
-          assert.equal(res.body.name, "Cristoforo");
-          assert.equal(res.body.surname, "Colombo");
-          done();
-        });
+    // #5
+    test('Submit the surname "Colombo" in the HTML form', function (done) {
+      browser.fill('surname', 'Colombo').pressButton('submit', function () {
+        browser.assert.success();
+        browser.assert.text('span#name', 'Cristoforo');
+        browser.assert.text('span#surname', 'Colombo');
+        browser.assert.element('span#dates', 1);
+        done();
+      });
     });
 
     // #6 - Teste equivalente ao formulário HTML para Vespucci
