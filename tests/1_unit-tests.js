@@ -24,7 +24,6 @@ suite("Unit Tests", function () {
     });
 
     // #4
-    // #4
     test("#isTrue, #isNotTrue", function () {
       assert.isTrue(true, "true is true"); // 1ª: true → isTrue ✅
       assert.isNotTrue("true", "string is not true"); // 2ª: 'true' → isNotTrue ✅
