@@ -50,9 +50,16 @@ suite("Unit Tests", function () {
     });
 
     // #6
+    // #6
     test("#strictEqual, #notStrictEqual", function () {
-      assert.strictEqual(7, 7, "these numbers are strictly equal");
-      assert.notStrictEqual(7, "7", "number and string are not strictly equal");
+      assert.notStrictEqual(6, "6", '6 and "6" are not strictly equal');
+      assert.strictEqual(6, 3 * 2, "6 and 3*2 are strictly equal");
+      assert.strictEqual(6 * "2", 12, '6 * "2" equals 12 (number)');
+      assert.notStrictEqual(
+        [1, "a", {}],
+        [1, "a", {}],
+        "arrays are different objects",
+      );
     });
 
     // #7
