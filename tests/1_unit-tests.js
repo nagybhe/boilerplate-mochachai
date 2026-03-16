@@ -25,9 +25,9 @@ suite("Unit Tests", function () {
 
     // #4
     test("#isTrue, #isNotTrue", function () {
-      assert.isTrue(true, "true is true"); // 1ª: true → isTrue ✅
-      assert.isNotTrue("true", "string is not true"); // 2ª: 'true' → isNotTrue ✅
-      assert.isNotTrue(1, "number is not true"); // 3ª: 1 → isNotTrue ✅
+      assert.isTrue(true, "true is true"); // Mantém isTrue
+      assert.isNotTrue("true", "string is not true"); // Muda para isNotTrue
+      assert.isNotTrue(1, "number is not true"); // Muda para isNotTrue
     });
   });
 
