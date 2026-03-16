@@ -41,13 +41,13 @@ suite("Functional Tests", function () {
       chai
         .request(server)
         .keepOpen()
-        .put('/travellers')
-        .send({ surname: 'Colombo' })
+        .put("/travellers")
+        .send({ surname: "Colombo" })
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.type, 'application/json');
-          assert.equal(res.body.name, 'Cristoforo');
-          assert.equal(res.body.surname, 'Colombo');
+          assert.equal(res.type, "application/json");
+          assert.equal(res.body.name, "Cristoforo");
+          assert.equal(res.body.surname, "Colombo");
           // REMOVA a linha: assert.equal(res.body.dates, '1451 - 1506');
           done();
         });
@@ -62,6 +62,7 @@ suite("Functional Tests", function () {
         .send({ surname: "da Verrazzano" })
         .end(function (err, res) {
           assert.equal(res.status, 200);
+          assert.equal(res.type, "application/json"); // ← ADICIONE ESTA LINHA
           assert.isObject(res.body);
           assert.equal(res.body.name, "Giovanni");
           assert.equal(res.body.surname, "da Verrazzano");
