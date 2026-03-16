@@ -24,10 +24,10 @@ suite("Unit Tests", function () {
     });
 
     // #4
-    test("#isTrue, #isNotTrue", function () {
-      assert.isTrue(true, "true is true"); // Mantém isTrue
-      assert.isNotTrue("true", "string is not true"); // Muda para isNotTrue
-      assert.isNotTrue(1, "number is not true"); // Muda para isNotTrue
+    test('#isTrue, #isNotTrue', function () {
+      assert.isTrue(true, 'true is true');
+      assert.isTrue(!!'double negation', 'double negation of a truthy is true');
+      assert.isNotTrue({ value: 'truthy' }, 'A truthy object is NOT TRUE (neither is false...)');
     });
   });
 
