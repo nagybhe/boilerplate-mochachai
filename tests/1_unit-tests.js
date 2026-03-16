@@ -99,8 +99,18 @@ suite("Unit Tests", function () {
 
     // #10
     test("#approximately", function () {
-      assert.approximately(weirdNumbers(0.5), 1, 0.5);
-      assert.approximately(weirdNumbers(0.5), 1, 0.5);
+      assert.approximately(
+        weirdNumbers(0.5),
+        1,
+        0.5,
+        "weirdNumbers(0.5) should be within 0.5 of 1",
+      );
+      assert.approximately(
+        weirdNumbers(0.2),
+        1,
+        0.8,
+        "weirdNumbers(0.2) should be within 0.8 of 1",
+      );
     });
   });
 
