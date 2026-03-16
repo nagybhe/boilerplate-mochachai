@@ -78,7 +78,7 @@ suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
 
   // Configurar o site
-  browser.site = 'https://boilerplate-mochachai-t76e.onrender.com'; // Use a URL do Render
+  browser.site = 'https://boilerplate-mochachai -t76e.onrender.com'; // Use a URL do Render
 
   suite('Headless browser', function () {
     test('should have a working "site" property', function () {
@@ -94,7 +94,7 @@ suite('Functional Tests with Zombie.js', function () {
           browser.assert.success();
           browser.assert.text('span#name', 'Cristoforo');
           browser.assert.text('span#surname', 'Colombo');
-          browser.assert.element('span#dates', 1);
+          browser.assert.elements('span#dates', 1);  // Mude de element para elements
           done();
         });
       });
@@ -107,7 +107,7 @@ suite('Functional Tests with Zombie.js', function () {
           browser.assert.success();
           browser.assert.text('span#name', 'Amerigo');
           browser.assert.text('span#surname', 'Vespucci');
-          browser.assert.element('span#dates', 1);
+          browser.assert.elements('span#dates', 1);  // Mude de element para elements
           done();
         });
       });
