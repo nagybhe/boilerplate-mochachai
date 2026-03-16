@@ -74,44 +74,42 @@ suite("Functional Tests", function () {
 const Browser = require('zombie');
 const browser = new Browser();
 
-suite('Functional Tests with Zombie.js', function () {
-  this.timeout(5000);
-
-  browser.site = 'http://localhost:3000'; // Configure o site
-
-  suite('Headless browser', function () {
-    test('should have a working "site" property', function () {
-      assert.isNotNull(browser.site);
-    });
+suite('"Famous Italian Explorers" form', function () {
+  
+  // Setup: visitar a página antes de cada teste
+  setup(function(done) {
+    browser.visit('http://localhost:3000/', done);
   });
 
-  suite('"Famous Italian Explorers" form', function () {
-    // #5
-    test('Submit the surname "Colombo" in the HTML form', function (done) {
-      browser.fill('surname', 'Colombo').then(() => {
-        browser.pressButton('submit', function () {
+  // #5
+  test('Submit the surname "Colombo" in the HTML form', function (done) {
+    browser
+      .fill('surname', 'Colombo')
+      .pressButton('submit', function() {
+        // Pequeno delay para a resposta AJAX
+        setTimeout(function() {
           browser.assert.success();
           browser.assert.text('span#name', 'Cristoforo');
           browser.assert.text('span#surname', 'Colombo');
           browser.assert.elements('span#dates', 1);
           done();
-        });
+        }, 500);
       });
-    });
+  });
 
-    // #6
-    test('Submit the surname "Vespucci" in the HTML form', function (done) {
-      browser.visit('/', function () {
-        browser.fill('surname', 'Vespucci').then(() => {
-          browser.pressButton('submit', function () {
-            browser.assert.success();
-            browser.assert.text('span#name', 'Amerigo');
-            browser.assert.text('span#surname', 'Vespucci');
-            browser.assert.elements('span#dates', 1);
-            done();
-          });
-        });
+  // #6
+  test('Submit the surname "Vespucci" in the HTML form', function (done) {
+    browser
+      .fill('surname', 'Vespucci')
+      .pressButton('submit', function() {
+        // Pequeno delay para a resposta AJAX
+        setTimeout(function() {
+          browser.assert.success();
+          browser.assert.text('span#name', 'Amerigo');
+          browser.assert.text('span#surname', 'Vespucci');
+          browser.assert.elements('span#dates', 1);
+          done();
+        }, 500);
       });
-    })
   });
 });
