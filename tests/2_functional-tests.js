@@ -78,7 +78,12 @@ suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
 
   // Configurar o site
-  browser.site = 'https://boilerplate-mochachai -t76e.onrender.com'; // Use a URL do Render
+  browser.site = 'https://boilerplate-mochachai-t76e.onrender.com';
+
+  // ADICIONE ESTE SUITESETUP
+  suiteSetup(function(done) {
+    return browser.visit('/', done);
+  });
 
   suite('Headless browser', function () {
     test('should have a working "site" property', function () {
@@ -89,27 +94,23 @@ suite('Functional Tests with Zombie.js', function () {
   suite('"Famous Italian Explorers" form', function () {
     // #5
     test('Submit the surname "Colombo" in the HTML form', function (done) {
-      browser.visit('/', function() {
-        browser.fill('surname', 'Colombo').pressButton('submit', function() {
-          browser.assert.success();
-          browser.assert.text('span#name', 'Cristoforo');
-          browser.assert.text('span#surname', 'Colombo');
-          browser.assert.elements('span#dates', 1);  // Mude de element para elements
-          done();
-        });
+      browser.fill('surname', 'Colombo').pressButton('submit', function() {
+        browser.assert.success();
+        browser.assert.text('span#name', 'Cristoforo');
+        browser.assert.text('span#surname', 'Colombo');
+        browser.assert.elements('span#dates', 1);
+        done();
       });
     });
 
     // #6
     test('Submit the surname "Vespucci" in the HTML form', function (done) {
-      browser.visit('/', function() {
-        browser.fill('surname', 'Vespucci').pressButton('submit', function() {
-          browser.assert.success();
-          browser.assert.text('span#name', 'Amerigo');
-          browser.assert.text('span#surname', 'Vespucci');
-          browser.assert.elements('span#dates', 1);  // Mude de element para elements
-          done();
-        });
+      browser.fill('surname', 'Vespucci').pressButton('submit', function() {
+        browser.assert.success();
+        browser.assert.text('span#name', 'Amerigo');
+        browser.assert.text('span#surname', 'Vespucci');
+        browser.assert.elements('span#dates', 1);
+        done();
       });
     });
   });
