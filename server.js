@@ -7,6 +7,7 @@ const runner = require('./test-runner');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
@@ -63,7 +64,8 @@ const travellers = function (req, res) {
 
 
 app.route('/travellers')
-  .put(travellers);
+  .post(travellers)
+  .put(travellers);  // Adicione esta linha para aceitar PUT
 
 let error;
 app.get('/_api/get-tests', cors(), function (req, res, next) {
