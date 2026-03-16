@@ -24,10 +24,13 @@ suite("Unit Tests", function () {
     });
 
     // #4
-    test('#isTrue, #isNotTrue', function () {
-      assert.isTrue(true, 'true is true');
-      assert.isTrue(!!'double negation', 'double negation of a truthy is true');
-      assert.isNotTrue({ value: 'truthy' }, 'A truthy object is NOT TRUE (neither is false...)');
+    test("#isTrue, #isNotTrue", function () {
+      assert.isTrue(true, "true is true");
+      assert.isTrue(!!"double negation", "double negation of a truthy is true");
+      assert.isNotTrue(
+        { value: "truthy" },
+        "A truthy object is NOT TRUE (neither is false...)",
+      );
     });
   });
 
@@ -37,7 +40,13 @@ suite("Unit Tests", function () {
     // #5
     test("#equal, #notEqual", function () {
       assert.equal(12, "12", "numbers are coerced into strings with ==");
-      assert.notEqual(3, 4, "these numbers are not equal");
+      assert.notEqual(
+        { value: 1 },
+        { value: 1 },
+        "== compares object references",
+      );
+      assert.equal(6 * "2", "12", "no more hints...");
+      assert.notEqual(6 + "2", "12", "type your error message if you want");
     });
 
     // #6
