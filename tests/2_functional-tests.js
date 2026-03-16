@@ -76,7 +76,7 @@ const browser = new Browser();
 
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
-  
+
   browser.site = 'http://localhost:3000'; // Configure o site
 
   suite('Headless browser', function () {
@@ -101,15 +101,17 @@ suite('Functional Tests with Zombie.js', function () {
 
     // #6
     test('Submit the surname "Vespucci" in the HTML form', function (done) {
-      browser.fill('surname', 'Vespucci').then(() => {
-        browser.pressButton('submit', function () {
-          browser.assert.success();
-          browser.assert.text('span#name', 'Amerigo');
-          browser.assert.text('span#surname', 'Vespucci');
-          browser.assert.elements('span#dates', 1);
-          done();
+      browser.visit('/', function () {
+        browser.fill('surname', 'Vespucci').then(() => {
+          browser.pressButton('submit', function () {
+            browser.assert.success();
+            browser.assert.text('span#name', 'Amerigo');
+            browser.assert.text('span#surname', 'Vespucci');
+            browser.assert.elements('span#dates', 1);
+            done();
+          });
         });
       });
-    });
+    })
   });
 });
