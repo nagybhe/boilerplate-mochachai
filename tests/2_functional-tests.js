@@ -98,7 +98,7 @@ suite('Functional Tests with Zombie.js', function () {
         browser.assert.success();
         browser.assert.text('span#name', 'Cristoforo');
         browser.assert.text('span#surname', 'Colombo');
-        browser.assert.elements('span#dates', 1);
+        browser.assert.element('span#dates', 1);  // ← Mude de elements para element
         done();
       });
     });
@@ -109,7 +109,7 @@ suite('Functional Tests with Zombie.js', function () {
         browser.assert.success();
         browser.assert.text('span#name', 'Amerigo');
         browser.assert.text('span#surname', 'Vespucci');
-        browser.assert.elements('span#dates', 1);
+        browser.assert.element('span#dates', 1);  // ← Mude de elements para element
         done();
       });
     });
