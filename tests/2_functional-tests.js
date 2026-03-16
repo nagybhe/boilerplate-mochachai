@@ -79,21 +79,16 @@ suite("Functional Tests", function () {
         done();
       });
     });
-
-    // #6 - Teste equivalente ao formulário HTML para Vespucci
-    test('Submit the surname "Vespucci" via POST', function (done) {
-      chai
-        .request(server)
-        .keepOpen()
-        .post("/travellers")
-        .send({ surname: "Vespucci" })
-        .end(function (err, res) {
-          assert.equal(res.status, 200);
-          assert.isObject(res.body);
-          assert.equal(res.body.name, "Amerigo");
-          assert.equal(res.body.surname, "Vespucci");
-          done();
-        });
+    
+    // #6
+    test('Submit the surname "Vespucci" in the HTML form', function (done) {
+      browser.fill('surname', 'Vespucci').pressButton('submit', function () {
+        browser.assert.success();
+        browser.assert.text('span#name', 'Amerigo');
+        browser.assert.text('span#surname', 'Vespucci');
+        browser.assert.element('span#dates', 1);
+        done();
+      });
     });
   });
 });
