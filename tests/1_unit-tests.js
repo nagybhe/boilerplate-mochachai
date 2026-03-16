@@ -24,10 +24,11 @@ suite("Unit Tests", function () {
     });
 
     // #4
-    test('#isTrue, #isNotTrue', function () {
-      assert.isTrue(true, 'true is true');              // true é booleano true
-      assert.isNotTrue('true', 'string is not true');   // 'true' não é booleano true
-      assert.isNotTrue(1, 'number is not true');        // 1 não é booleano true
+    // #4
+    test("#isTrue, #isNotTrue", function () {
+      assert.isTrue(true, "true is true"); // 1ª: true → isTrue ✅
+      assert.isNotTrue("true", "string is not true"); // 2ª: 'true' → isNotTrue ✅
+      assert.isNotTrue(1, "number is not true"); // 3ª: 1 → isNotTrue ✅
     });
   });
 
